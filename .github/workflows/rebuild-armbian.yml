@@ -49,7 +49,6 @@ jobs:
         uses: ncipollo/release-action@main
         with:
           artifacts: msm8916-armbian/rootfs.img
-          name: ${{ steps.init.outputs.build_tag }}
           tag: ${{ steps.init.outputs.build_tag }}
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
