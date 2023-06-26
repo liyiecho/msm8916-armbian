@@ -3,5 +3,5 @@ tag=$(wget -qO- -t1 -T2 "https://api.github.com/repos/liyiecho/MainsailOS/releas
 file=$(wget -qO- -t1 -T2 "https://api.github.com/repos/liyiecho/MainsailOS/releases/latest" | grep "xz" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
 
 wget https://github.com/liyiecho/MainsailOS/releases/download/${tag}/${file}
-unxz *_armbian-msm8916.img.xz
-mv *_armbian-msm8916.img armbian.img
+unxz --keep 20*-armbian-msm8916.img.xz
+mv 20*-armbian-msm8916.img armbian.img
