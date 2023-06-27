@@ -28,7 +28,7 @@ esac
 
 make_img() {
     dd if=/dev/zero of=${temp_img} bs=1M count=3200
-    dd if=/dev/zero of=${armbian_rebuild_file} bs=1M count=1500
+    dd if=/dev/zero of=${armbian_rebuild_file} bs=1M count=2000
     mkfs.btrfs ${armbian_rebuild_file}
     mkfs.btrfs ${temp_img}
 }
