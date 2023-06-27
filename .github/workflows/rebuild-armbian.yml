@@ -56,8 +56,8 @@ jobs:
             ###以下是 Armbian OS 镜像
             - 本次固件基带为${{ inputs.armbian_board }}
             - 系统信息：
-            - 默认用户名：root
-            - 默认密码：1234
+            - 默认用户名：pi
+            - 默认密码：armbian
             - 全局配置命令：armbian-config
             - WiFi名称：4G-UFI
             - WiFi密码：12345678
