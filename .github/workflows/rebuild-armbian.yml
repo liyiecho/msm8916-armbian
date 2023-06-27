@@ -16,9 +16,6 @@ on:
         options:
           - ufi001c
           - ufi003
-  push:
-    tags:
-    - '*'
 
 jobs:
   build:
