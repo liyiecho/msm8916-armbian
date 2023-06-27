@@ -48,7 +48,7 @@ jobs:
       - name: 上传 Armbian 镜像至 Release
         uses: ncipollo/release-action@main
         with:
-          artifacts: msm8916-armbian/rootfs.img
+          artifacts: msm8916-armbian/rootfs.zip
           name: ${{ steps.init.outputs.build_tag }}
           tag: ${{ steps.init.outputs.build_tag }}
           token: ${{ secrets.GITHUB_TOKEN }}

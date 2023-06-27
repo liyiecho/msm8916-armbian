@@ -28,7 +28,7 @@ esac
 
 make_img() {
     dd if=/dev/zero of=${temp_img} bs=1M count=3200
-    dd if=/dev/zero of=${armbian_rebuild_file} bs=1M count=2000
+    dd if=/dev/zero of=${armbian_rebuild_file} bs=1M count=3000
     mkfs.btrfs ${armbian_rebuild_file}
     mkfs.btrfs ${temp_img}
 }
@@ -102,6 +102,7 @@ resize_img
 umount_img
 umount_origin_armbian_img
 img2simg ${armbian_rebuild_file} rootfs.img
+7z a -tzip rootfs.zip rootfs.img -r -mx=9
 rm ${temp_img}
 rm -rf ${armbian_origin_dir}
 rm -rf ${armbian_rebuild_dir}
