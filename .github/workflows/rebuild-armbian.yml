@@ -41,8 +41,8 @@ jobs:
           sudo mkdir armbian
           sudo mkdir armbian-msm8916
           sudo mkdir temp
-          sudo dd if=/dev/zero of=temp.img bs=1M count=1536
-          sudo dd if=/dev/zero of=armbian-msm8916.img bs=1M count=1234
+          sudo dd if=/dev/zero of=temp.img bs=1M count=3200
+          sudo dd if=/dev/zero of=armbian-msm8916.img bs=1M count=3000
           sudo mkfs.btrfs armbian-msm8916.img
           sudo mkfs.btrfs temp.img
           sudo mount -o compress=zstd:15 temp.img temp
@@ -69,6 +69,7 @@ jobs:
           sudo umount armbian
           sudo losetup -d /dev/loop404
           sudo img2simg armbian-msm8916.img rootfs.img
+          sudo 7z a -tzip rootfs.zip rootfs.img -r -mx=9
           sudo rm temp.img
           sudo rm -rf armbian
           sudo rm -rf armbian-msm8916
