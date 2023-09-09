@@ -3,7 +3,7 @@
 install_package() {
     apt update
     dpkg -i /tmp/*.deb
-    apt install -y coreutils network-manager modemmanager bc bsdmainutils gawk
+    apt install -y coreutils network-manager bc bsdmainutils gawk
     apt --fix-broken install -y
     apt install -y libqmi-utils
     DEBIAN_FRONTEND=noninteractive apt install -y iptables-persistent
@@ -26,6 +26,8 @@ common_set() {
     rm /usr/lib/systemd/system/openstick-startup-diagnose.timer
     cp /tmp/mobian-setup-usb-network /usr/sbin/
     cp /tmp/mobian-setup-usb-network.service /usr/lib/systemd/system/mobian-setup-usb-network.service
+    cp /tmp/gpioled /usr/sbin/
+    cp /tmp/gpioled.service /usr/lib/systemd/system/gpioled.service
     cp /tmp/openstick-expanddisk-startup.sh /usr/sbin/
     cp /tmp/rules.v4 /etc/iptables/
     touch /etc/fstab
@@ -33,7 +35,7 @@ common_set() {
     sed -i '13 i\nmcli c u USB' /etc/rc.local
     sed -i 1s/-e// /etc/rc.local
     sed -i s/forking/idle/g /usr/lib/systemd/system/rc-local.service
-    sed -i s/'Odroid N2'/MSM8916/g /etc/armbian-release
+    sed -i s/'Odroid N2'/MSM8916/g /etc/armbian-release-info.txt
     sed -i s/'# ZRAM_PERCENTAGE=50'/ZRAM_PERCENTAGE=300/g /etc/default/armbian-zram-config
     sed -i s/'# MEM_LIMIT_PERCENTAGE=50'/MEM_LIMIT_PERCENTAGE=300/g /etc/default/armbian-zram-config
     sed -i '21 s/$sim/sim:sel/' /usr/sbin/openstick-sim-changer.sh
