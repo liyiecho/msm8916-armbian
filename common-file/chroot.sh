@@ -41,6 +41,7 @@ common_set() {
     sed -i '21 s/$sim/sim:sel/' /usr/sbin/openstick-sim-changer.sh
     rm /etc/localtime
     ln -s /usr/share/zoneinfo/Asia/Chongqing /etc/localtime
+    rm /lib/systemd/system/ModemManager.service
 }
 
 clean_file() {
